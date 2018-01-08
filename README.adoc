@@ -1,0 +1,5 @@
+= Grails Bulk Insert
+
+
+Code repository of Ted Naleid blog post https://web.archive.org/web/20170312093359/http://naleid.com/blog/2009/10/01/batch-import-performance-with-grails-and-mysql[Batch Import Performance With Grails and MySQL]
+
