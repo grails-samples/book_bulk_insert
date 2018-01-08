@@ -1,20 +1,28 @@
 package demo
 
+import grails.config.Config
+import grails.core.support.GrailsConfigurationAware
 import grails.gorm.transactions.Transactional
 import groovy.transform.CompileStatic
 import org.hibernate.SessionFactory
 
 @CompileStatic
-class BookCleanupGormService implements BookGateway {
+class BookCleanupGormService implements BookGateway, GrailsConfigurationAware {
 
     SessionFactory sessionFactory
+    int batchSize
+
+    @Override
+    void setConfiguration(Config co) {
+        batchSize = co.getProperty('demo.batchsize', Integer, 100)
+    }
 
     @Transactional
     @Override
     void importBooksInLibrary(Library library) {
         library.eachWithIndex { Object bookValueMap, int index ->
             updateOrInsertBook(bookValueMap as Map)
-            if (index % 100 == 0) cleanUpGorm()
+            if (index % batchSize == 0) cleanUpGorm()
         }
     }
 
