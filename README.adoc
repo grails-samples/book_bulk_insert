@@ -1,5 +1,12 @@
 = Grails Bulk Insert
 
-
 Code repository of Ted Naleid blog post https://web.archive.org/web/20170312093359/http://naleid.com/blog/2009/10/01/batch-import-performance-with-grails-and-mysql[Batch Import Performance With Grails and MySQL]
+
+This is a sample repository which illustrates how you can improve a bulk insert or update with
+
+- https://github.com/grails-samples/book_bulk_insert/blob/master/grails-app/domain/demo/Book.groovy#L13[Adequate database indexes]
+- https://github.com/grails-samples/book_bulk_insert/blob/master/grails-app/domain/services/BookCleanupGormService.groovy#L17[Employ methods `flush()` and `clear()` to the session regularly, to control the size of the first-level cache.]
+
+
+
 
